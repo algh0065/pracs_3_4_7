@@ -47,13 +47,23 @@ public class BoardTest {
     // public void hello() {}
     @Test
     public void sizeOneBoard() {
-        Board b = new Board(1);
+        Board b = new Board(1,1);
         b.setBoard(new int[][]{{2}});
         b.apply(Direction.UP);
         b.apply(Direction.LEFT);
-
+        
         Assert.assertTrue(assertState(b.getBoard(), new int[][]{{2}}));
     
+    }
+    
+    @Test 
+    public void simpleMergeUp () {
+        Board b = new Board(2,1);
+        b.setBoard(new int[][]{{2},{2}});
+        b.apply(Direction.UP);
+        
+        Assert.assertTrue(assertState(b.getBoard(), new int[][]{{4}, {0}}));
+        
     }
 
     public boolean assertState(int[][] b1, int[][] b2) {

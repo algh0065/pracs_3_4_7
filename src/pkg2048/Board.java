@@ -11,12 +11,14 @@ package pkg2048;
  */
 public class Board {
 
-    private int size;
+    private int rows;
+    private int cols;
     private int board[][];
 
-    public Board(int size) {
-        this.size = size;
-        board = new int[size][size];
+    public Board(int rows, int cols) {
+        this.rows = rows;
+        this.cols = cols;
+        board = new int[rows][cols];
     }
 
     public void setBoard(int[][] board) {
