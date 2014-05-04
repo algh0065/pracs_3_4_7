@@ -65,6 +65,16 @@ public class BoardTest {
         Assert.assertTrue(assertState(b.getBoard(), new int[][]{{4}, {0}}));
         
     }
+    @Test 
+    public void simpleMergeDown () {
+        Board b = new Board(2,1);
+        b.setBoard(new int[][]{{2},{2}});
+        b.apply(Direction.DOWN);
+        
+        Assert.assertTrue(assertState(b.getBoard(), new int[][]{{0}, {4}}));
+        
+    }
+    
 
     public boolean assertState(int[][] b1, int[][] b2) {
         if (b1.length != b2.length) {
