@@ -19,7 +19,15 @@ public class Board {
         board = new int[size][size];
     }
 
+    public void setBoard(int[][] board) {
+        this.board = board;
+    }
+
+    public int[][] getBoard() {
+        return board;
+    }
+
     public Board apply(Direction dir) {
-        throw new UnsupportedOperationException();
+        return this;
     }
 }
