@@ -101,6 +101,16 @@ public class BoardTest {
         Assert.assertTrue(assertState(b.getBoard(), new int[][]{{4,8}, {0,0}}));
         
     }
+     @Test 
+    public void twoByTwoHalfMergeUp () {
+        Board b = new Board(2,2);
+        b.setBoard(new int[][]{{2,4},{2,8}});
+        b.apply(Direction.UP);
+        
+        Assert.assertTrue(assertState(b.getBoard(), new int[][]{{4,4}, {0,8}}));
+        
+    }
+
 
     public boolean assertState(int[][] b1, int[][] b2) {
         if (b1.length != b2.length) {
