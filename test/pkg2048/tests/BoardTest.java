@@ -74,6 +74,24 @@ public class BoardTest {
         Assert.assertTrue(assertState(b.getBoard(), new int[][]{{0}, {4}}));
         
     }
+    @Test 
+    public void simpleNonMergeUp () {
+        Board b = new Board(2,1);
+        b.setBoard(new int[][]{{2},{8}});
+        b.apply(Direction.UP);
+        
+        Assert.assertTrue(assertState(b.getBoard(), new int[][]{{2}, {8}}));
+        
+    }
+     @Test 
+    public void simpleNonMergeDown () {
+        Board b = new Board(2,1);
+        b.setBoard(new int[][]{{2},{8}});
+        b.apply(Direction.DOWN);
+        
+        Assert.assertTrue(assertState(b.getBoard(), new int[][]{{2}, {8}}));
+        
+    }
     
 
     public boolean assertState(int[][] b1, int[][] b2) {
