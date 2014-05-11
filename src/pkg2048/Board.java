@@ -33,9 +33,9 @@ public class Board {
         return this;
     }
 
-    private int[] applyRightDown(int[] line, Direction dir) {
+    public int[] applyRightDown(int[] line) {
         int i = 0;
-        while (i <= line.length - 3) {
+        while (i <= line.length - 2) {
             int a = line[i];
             int b = line[i + 1];
             if (a == b) {
@@ -57,7 +57,7 @@ public class Board {
         return result;
     }
 
-    private int[] applyLeftUp(int[] line, Direction dir) {
+    public int[] applyLeftUp(int[] line) {
         int i = line.length - 1;
         while (i >= 1) {
             int a = line[i];

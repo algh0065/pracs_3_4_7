@@ -47,70 +47,96 @@ public class BoardTest {
     // public void hello() {}
     @Test
     public void sizeOneBoard() {
-        Board b = new Board(1,1);
+        Board b = new Board(1, 1);
         b.setBoard(new int[][]{{2}});
         b.apply(Direction.UP);
         b.apply(Direction.LEFT);
-        
+
         Assert.assertTrue(assertState(b.getBoard(), new int[][]{{2}}));
-    
-    }
-    
-    @Test 
-    public void simpleMergeUp () {
-        Board b = new Board(2,1);
-        b.setBoard(new int[][]{{2},{2}});
-        b.apply(Direction.UP);
-        
-        Assert.assertTrue(assertState(b.getBoard(), new int[][]{{4}, {0}}));
-        
-    }
-    @Test 
-    public void simpleMergeDown () {
-        Board b = new Board(2,1);
-        b.setBoard(new int[][]{{2},{2}});
-        b.apply(Direction.DOWN);
-        
-        Assert.assertTrue(assertState(b.getBoard(), new int[][]{{0}, {4}}));
-        
-    }
-    @Test 
-    public void simpleNonMergeUp () {
-        Board b = new Board(2,1);
-        b.setBoard(new int[][]{{2},{8}});
-        b.apply(Direction.UP);
-        
-        Assert.assertTrue(assertState(b.getBoard(), new int[][]{{2}, {8}}));
-        
-    }
-     @Test 
-    public void simpleNonMergeDown () {
-        Board b = new Board(2,1);
-        b.setBoard(new int[][]{{2},{8}});
-        b.apply(Direction.DOWN);
-        
-        Assert.assertTrue(assertState(b.getBoard(), new int[][]{{2}, {8}}));
-        
-    }
-    @Test 
-    public void twoByTwoMergeUp () {
-        Board b = new Board(2,2);
-        b.setBoard(new int[][]{{2,4},{2,4}});
-        b.apply(Direction.UP);
-        
-        Assert.assertTrue(assertState(b.getBoard(), new int[][]{{4,8}, {0,0}}));
-        
-    }
-     @Test 
-    public void twoByTwoHalfMergeUp () {
-        Board b = new Board(2,2);
-        b.setBoard(new int[][]{{2,4},{2,8}});
-        b.apply(Direction.UP);
-        
-        Assert.assertTrue(assertState(b.getBoard(), new int[][]{{4,4}, {0,8}}));
-        
+
     }
 
+    @Test
+    public void simpleMergeUp() {
+        Board b = new Board(2, 1);
+        b.setBoard(new int[][]{{2}, {2}});
+        b.apply(Direction.UP);
+
+        Assert.assertTrue(assertState(b.getBoard(), new int[][]{{4}, {0}}));
+
+    }
+
+    @Test
+    public void simpleMergeDown() {
+        Board b = new Board(2, 1);
+        b.setBoard(new int[][]{{2}, {2}});
+        b.apply(Direction.DOWN);
+
+        Assert.assertTrue(assertState(b.getBoard(), new int[][]{{0}, {4}}));
+
+    }
+
+    @Test
+    public void simpleNonMergeUp() {
+        Board b = new Board(2, 1);
+        b.setBoard(new int[][]{{2}, {8}});
+        b.apply(Direction.UP);
+
+        Assert.assertTrue(assertState(b.getBoard(), new int[][]{{2}, {8}}));
+
+    }
+
+    @Test
+    public void simpleNonMergeDown() {
+        Board b = new Board(2, 1);
+        b.setBoard(new int[][]{{2}, {8}});
+        b.apply(Direction.DOWN);
+
+        Assert.assertTrue(assertState(b.getBoard(), new int[][]{{2}, {8}}));
+
+    }
+
+    @Test
+    public void twoByTwoMergeUp() {
+        Board b = new Board(2, 2);
+        b.setBoard(new int[][]{{2, 4}, {2, 4}});
+        b.apply(Direction.UP);
+
+        Assert.assertTrue(assertState(b.getBoard(), new int[][]{{4, 8}, {0, 0}}));
+
+    }
+
+    @Test
+    public void twoByTwoHalfMergeUp() {
+        Board b = new Board(2, 2);
+        b.setBoard(new int[][]{{2, 4}, {2, 8}});
+        b.apply(Direction.UP);
+
+        Assert.assertTrue(assertState(b.getBoard(), new int[][]{{4, 4}, {0, 8}}));
+
+    }
+
+    @Test
+    public void singleRowLeftUPTest() {
+        Board b = new Board(1, 4);
+        int[] result = b.applyLeftUp(new int[]{2, 2, 2, 2});
+        assertTrue(result[0] == 4);
+        assertTrue(result[1] == 4);
+        assertTrue(result[2] == 0);
+        assertTrue(result[3] == 0);
+    }
+    
+    
+
+    @Test
+    public void singleRowRightDownTest() {
+        Board b = new Board(1, 4);
+        int[] result = b.applyRightDown(new int[]{2, 2, 2, 2});
+        assertTrue(result[0] == 0);
+        assertTrue(result[1] == 0);
+        assertTrue(result[2] == 4);
+        assertTrue(result[3] == 4);
+    }
 
     public boolean assertState(int[][] b1, int[][] b2) {
         if (b1.length != b2.length) {
