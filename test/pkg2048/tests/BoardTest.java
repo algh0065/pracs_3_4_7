@@ -125,8 +125,6 @@ public class BoardTest {
         assertTrue(result[2] == 0);
         assertTrue(result[3] == 0);
     }
-    
-    
 
     @Test
     public void singleRowRightDownTest() {
@@ -136,6 +134,14 @@ public class BoardTest {
         assertTrue(result[1] == 0);
         assertTrue(result[2] == 4);
         assertTrue(result[3] == 4);
+    }
+
+    @Test
+    public void printTest() {
+        Board b = new Board(4, 4);
+        b.setBoard(new int[][]{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}});
+        b.print();
+        // I verfied the result in the output
     }
 
     public boolean assertState(int[][] b1, int[][] b2) {
