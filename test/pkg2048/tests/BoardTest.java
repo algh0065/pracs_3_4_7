@@ -144,6 +144,29 @@ public class BoardTest {
         // I verfied the result in the output
     }
 
+    @Test
+    public void randomGenerateTest() {
+        Board b = new Board(4, 4);
+        int temp[][] = new int[][]{{2, 2, 0, 4}, {0, 0, 0, 4}, {4, 0, 0, 16}, {0, 4, 128, 0}};
+        b.setBoard(temp);
+        b.generateRandom();
+        int result[][] = b.getBoard();
+        boolean flag = false;
+        for (int i = 0; i < temp.length; i++) {
+            for (int j = 0; j < temp[i].length; j++) {
+                if (temp[i][j] != result[i][j]) {
+                    assertFalse(flag);
+                    if (temp[i][j] != 0) {
+                        assertTrue(false);
+                    }
+                    flag = true;
+
+                }
+            }
+        }
+        assertTrue(flag);
+    }
+
     public boolean assertState(int[][] b1, int[][] b2) {
         if (b1.length != b2.length) {
             return false;
