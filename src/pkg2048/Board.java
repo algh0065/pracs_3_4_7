@@ -30,6 +30,48 @@ public class Board {
     }
 
     public Board apply(Direction dir) {
+        switch (dir) {
+            case LEFT:
+                for (int i = 0; i < rows; i++) {
+                    int temp[] = new int[cols];
+                    System.arraycopy(board[i], 0, temp, 0, cols);
+                    temp = applyLeftUp(temp);
+                    System.arraycopy(temp, 0, board[i], 0, cols);
+                }
+                break;
+            case RIGHT:
+                for (int i = 0; i < rows; i++) {
+                    int temp[] = new int[cols];
+                    System.arraycopy(board[i], 0, temp, 0, cols);
+                    temp = applyRightDown(temp);
+                    System.arraycopy(temp, 0, board[i], 0, cols);
+                }
+                break;
+            case UP:
+                for (int i = 0; i < cols; i++) {
+                    int temp[] = new int[rows];
+                    for (int j = 0; j < rows; j++) {
+                        temp[j] = board[j][i];
+                    }
+                    temp = applyLeftUp(temp);
+                    for (int j = 0; j < rows; j++) {
+                        board[j][i] = temp[j];
+                    }
+                }
+                break;
+            case DOWN:
+                for (int i = 0; i < cols; i++) {
+                    int temp[] = new int[rows];
+                    for (int j = 0; j < rows; j++) {
+                        temp[j] = board[j][i];
+                    }
+                    temp = applyRightDown(temp);
+                    for (int j = 0; j < rows; j++) {
+                        board[j][i] = temp[j];
+                    }
+                }
+                break;
+        }
         return this;
     }
 
@@ -80,5 +122,4 @@ public class Board {
         }
         return result;
     }
-
 }
