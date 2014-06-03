@@ -5,6 +5,9 @@
  */
 package pkg2048;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Al-Safa Tech
@@ -124,17 +127,28 @@ public class Board {
     }
 
     public void print() {
-        for (int i = 0; i < rows; i++){
-            for (int j = 0; j < cols; j++){
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
                 System.out.print(board[i][j] + "\t");
             }
             System.out.println();
         }
         System.out.println();
     }
-    
-    public void generateRandom(){
-        
-        
+
+    public void generateRandom() {
+        List<Integer> l1 = new ArrayList<>();
+        List<Integer> l2 = new ArrayList<>();
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (board[i][j] == 0) {
+                    l1.add(i);
+                    l2.add(j);
+                }
+            }
+        }
+
+        int index = (int) (Math.random() * l1.size());
+        board[l1.get(index)][l2.get(index)] = 2;
     }
 }

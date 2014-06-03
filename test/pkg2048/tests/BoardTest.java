@@ -5,6 +5,7 @@
  */
 package pkg2048.tests;
 
+import java.util.Arrays;
 import junit.framework.Assert;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -148,15 +149,25 @@ public class BoardTest {
     public void randomGenerateTest() {
         Board b = new Board(4, 4);
         int temp[][] = new int[][]{{2, 2, 0, 4}, {0, 0, 0, 4}, {4, 0, 0, 16}, {0, 4, 128, 0}};
+        int original[][] = new int[temp.length][];
+        for (int i = 0; i < original.length; i++)
+        {
+            original[i] = new int[temp[i].length];
+            for (int j = 0; j < original[i].length; j++){
+                original[i][j] = temp[i][j];
+            }
+        }
         b.setBoard(temp);
+        b.print();
         b.generateRandom();
+        b.print();
         int result[][] = b.getBoard();
         boolean flag = false;
         for (int i = 0; i < temp.length; i++) {
             for (int j = 0; j < temp[i].length; j++) {
-                if (temp[i][j] != result[i][j]) {
+                if (original[i][j] != result[i][j]) {
                     assertFalse(flag);
-                    if (temp[i][j] != 0) {
+                    if (original[i][j] != 0) {
                         assertTrue(false);
                     }
                     flag = true;
