@@ -19,4 +19,10 @@ public class Main {
         // TODO code application logic here
     }
     
+    private static Board init() {
+        Board b = new Board(4, 4);
+        b.setBoard(new int[][]{{0, 0, 0, 0}, {2, 0, 0, 0}, {0, 4, 0, 0}, {0, 0, 0, 0}});
+        return b;
+    }
+    
 }
