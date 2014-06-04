@@ -153,7 +153,27 @@ public class Board {
     }
 
     public boolean isFinished() {
-        throw new RuntimeException("not implemented yet.");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols - 1; j++) {
+                if (board[i][j] * board[i][j + 1] == 0) {
+                    return false;
+                }
+                if (board[i][j] == board[i][j + 1]) {
+                    return false;
+                }
+            }
+        }
+        for (int i = 0; i < cols; i++) {
+            for (int j = 0; j < rows - 1; j++) {
+                if (board[j][i] * board[j + 1][i] == 0) {
+                    return false;
+                }
+                if (board[j][i] == board[j + 1][i]) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 }
