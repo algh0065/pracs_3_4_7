@@ -151,4 +151,9 @@ public class Board {
         int index = (int) (Math.random() * l1.size());
         board[l1.get(index)][l2.get(index)] = 2;
     }
+
+    public boolean isFinished() {
+        throw new RuntimeException("not implemented yet.");
+    }
+
 }

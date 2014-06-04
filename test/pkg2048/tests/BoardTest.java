@@ -150,10 +150,9 @@ public class BoardTest {
         Board b = new Board(4, 4);
         int temp[][] = new int[][]{{2, 2, 0, 4}, {0, 0, 0, 4}, {4, 0, 0, 16}, {0, 4, 128, 0}};
         int original[][] = new int[temp.length][];
-        for (int i = 0; i < original.length; i++)
-        {
+        for (int i = 0; i < original.length; i++) {
             original[i] = new int[temp[i].length];
-            for (int j = 0; j < original[i].length; j++){
+            for (int j = 0; j < original[i].length; j++) {
                 original[i][j] = temp[i][j];
             }
         }
@@ -176,6 +175,17 @@ public class BoardTest {
             }
         }
         assertTrue(flag);
+    }
+
+    @Test
+    public void finishedTest() {
+        Board b = new Board(4, 4);
+        int temp[][] = new int[][]{{2, 4, 2, 4}, {4, 2, 4, 2}, {2, 4, 2, 4}, {4, 2, 4, 2}};
+        b.setBoard(temp);
+        assertTrue(b.isFinished());
+        temp = new int[][]{{2, 4, 2, 4}, {2, 2, 4, 2}, {4, 4, 2, 4}, {4, 2, 4, 2}};
+        b.setBoard(temp);
+        assertFalse(b.isFinished());
     }
 
     public boolean assertState(int[][] b1, int[][] b2) {
