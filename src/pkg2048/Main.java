@@ -19,6 +19,13 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Scanner s = new Scanner(System.in);
+        Board b = init();
+        while (!b.isFinished()){
+            b.print();
+            b.apply(getNextMove(s));
+            b.generateRandom();
+        }
     }
     
     private static Board init() {
@@ -27,7 +34,7 @@ public class Main {
         return b;
     }
     
-    private Direction getNextMove(Scanner s){
+    private static Direction getNextMove(Scanner s){
         switch(s.nextInt()){
             case 1:
                 return Direction.UP;
