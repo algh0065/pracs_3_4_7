@@ -35,6 +35,7 @@ public class Board {
     public Board apply(Direction dir) {
         switch (dir) {
             case LEFT:
+                //path 1
                 for (int i = 0; i < rows; i++) {
                     int temp[] = new int[cols];
                     System.arraycopy(board[i], 0, temp, 0, cols);
@@ -43,6 +44,7 @@ public class Board {
                 }
                 break;
             case RIGHT:
+                // path 2
                 for (int i = 0; i < rows; i++) {
                     int temp[] = new int[cols];
                     System.arraycopy(board[i], 0, temp, 0, cols);
@@ -51,6 +53,7 @@ public class Board {
                 }
                 break;
             case UP:
+                // path 3
                 for (int i = 0; i < cols; i++) {
                     int temp[] = new int[rows];
                     for (int j = 0; j < rows; j++) {
@@ -63,6 +66,7 @@ public class Board {
                 }
                 break;
             case DOWN:
+                // path 4
                 for (int i = 0; i < cols; i++) {
                     int temp[] = new int[rows];
                     for (int j = 0; j < rows; j++) {
@@ -84,10 +88,12 @@ public class Board {
             int a = line[i];
             int b = line[i + 1];
             if (a == b) {
+                // path 2
                 line[i + 1] = a + b;
                 line[i] = 0;
                 i += 2;
             } else {
+                // path 1
                 i++;
             }
         }
@@ -95,6 +101,7 @@ public class Board {
         i = line.length - 1;
         for (int j = line.length - 1; j >= 0; j--) {
             if (line[j] != 0) {
+                // path 3
                 result[i] = line[j];
                 i--;
             }
@@ -156,9 +163,11 @@ public class Board {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols - 1; j++) {
                 if (board[i][j] * board[i][j + 1] == 0) {
+                    // First return statement
                     return false;
                 }
                 if (board[i][j] == board[i][j + 1]) {
+                    // Second return statement
                     return false;
                 }
             }
@@ -166,14 +175,16 @@ public class Board {
         for (int i = 0; i < cols; i++) {
             for (int j = 0; j < rows - 1; j++) {
                 if (board[j][i] * board[j + 1][i] == 0) {
+                    // Third return statement 
                     return false;
                 }
                 if (board[j][i] == board[j + 1][i]) {
+                    // Fourth return statement
                     return false;
                 }
             }
         }
+        // Fifth return statemnt 
         return true;
     }
-
 }
